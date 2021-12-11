@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ConfirmationWindow 
 {
@@ -101,6 +102,9 @@ public class ConfirmationWindow
 	private void confirmTransaction()
 	{
 		Stage owner = (Stage) stage.getOwner();
+		owner.removeEventHandler(
+				WindowEvent.WINDOW_CLOSE_REQUEST, 
+				owner.getOnCloseRequest());
 		store.finalizeTransaction(transactionId);
 		stage.close();
 		owner.close();

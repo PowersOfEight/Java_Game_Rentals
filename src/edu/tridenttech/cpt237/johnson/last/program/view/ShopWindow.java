@@ -111,7 +111,7 @@ public class ShopWindow
 	public ShopWindow(Stage stage)
 	{
 		this.stage = stage;
-		stage.setOnHidden(e-> 
+		stage.setOnCloseRequest(e-> 
 		{
 			onCancelOrder();
 		});
@@ -139,6 +139,7 @@ public class ShopWindow
 		this.shoppingCart.emptyCart(store);
 		this.stage.close();
 	}
+	
 
 	private void removeItemsFromCart(ListView<String> cart,
 			ListView<String> gameChooser)
