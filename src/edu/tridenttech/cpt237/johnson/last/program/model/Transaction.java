@@ -34,6 +34,28 @@ public class Transaction
 		return purchaseList.size();
 	}
 	
+	public String getReceipt()
+	{
+		StringBuilder receipt = new StringBuilder();
+		receipt.append(String.format("%-15s%-36s%8s%n", 
+				"System",
+				"Title",
+				"Price"));
+		for(Game game : getList())
+		{
+			receipt.append(String.format("%-15s%-36s%2s%6.2f%n",
+					game.getStringFormat(),
+					game.getTitle(),
+					"$",
+					COST_PER_GAME));
+		}
+		receipt.append(String.format("%-51s%2s%6.2f",
+				"Total",
+				"$",
+				calculateCost()));
+		return receipt.toString();
+	}
+	
 	public List<Game> getList()
 	{
 		purchaseList.sort((left, right)->

@@ -2,6 +2,7 @@ package edu.tridenttech.cpt237.johnson.last.program.model;
 
 public enum GameFormat 
 {
+	
 	NINTENDO	("Nintendo", "Switch", 1),
 	PLAYSTATION ("Sony", "Playstation 4", 2),
 	XBOX		("Microsoft", "X-Box One", 3);

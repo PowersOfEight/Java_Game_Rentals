@@ -162,6 +162,16 @@ public class Store
 		this.completedTransactions.add(transaction);
 	}
 	
+	public double getDailyTotal()
+	{
+		double dailyTotal = 0;
+		for(Transaction transaction : completedTransactions)
+		{
+			dailyTotal += transaction.calculateCost();
+		}
+		return dailyTotal;
+	}
+	
 	public List<Transaction> getTransactionHistory()
 	{
 		return Collections.unmodifiableList(completedTransactions);

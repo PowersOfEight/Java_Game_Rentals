@@ -37,9 +37,14 @@
 	-fx-text-fill: #c9c;
 }
 
-.text-area .content {
-	-fx-text-inner-color: #313;
+.text-area {
 	-fx-font-family: 'Consolas';
+	-fx-font-size: 12pt;
+	-fx-text-fill: rgb(47, 219, 31);
+}
+
+.text-area .content {
+	-fx-background-color: #313;
 }
 
 .text-area .scroll-pane .content {

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import edu.tridenttech.cpt237.johnson.last.program.model.Game;
 import edu.tridenttech.cpt237.johnson.last.program.model.Store;
 import edu.tridenttech.cpt237.johnson.last.program.model.Transaction;
 import javafx.fxml.FXML;
@@ -70,7 +69,6 @@ public class ConfirmationWindow
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -79,24 +77,7 @@ public class ConfirmationWindow
 	{
 		Transaction trans = 
 				store.findPendingTransactionById(transactionId);
-		StringBuilder receipt = new StringBuilder();
-		receipt.append(String.format("%-25s%-36s%8s%n", 
-				"System",
-				"Title",
-				"Price"));
-		for(Game game : trans.getList())
-		{
-			receipt.append(String.format("%-25s%-36s%2s%6.2f%n",
-					game.getStringFormat(),
-					game.getTitle(),
-					"$",
-					trans.costPerItem()));
-		}
-		receipt.append(String.format("%-61s%2s%6.2f",
-				"Total",
-				"$",
-				trans.calculateCost()));
-		controller.getTransaction().setText(receipt.toString());
+		controller.getTransaction().setText(trans.getReceipt());
 	}
 	
 	private void confirmTransaction()

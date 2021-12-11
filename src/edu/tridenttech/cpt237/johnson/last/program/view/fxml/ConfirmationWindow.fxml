@@ -8,19 +8,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" prefHeight="369.0" prefWidth="541.0" stylesheets="@../style/theme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<VBox alignment="CENTER" prefHeight="543.0" prefWidth="644.0" stylesheets="@../style/theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label prefHeight="35.0" prefWidth="238.0" text="Confirm Your Order">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="transaction" editable="false" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="transaction" editable="false" prefHeight="200.0" prefWidth="639.0" />
       <HBox alignment="CENTER" prefHeight="140.0" prefWidth="541.0" spacing="50.0" stylesheets="@../style/theme.css">
          <children>
-            <Button fx:id="confirm" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Confirm" />
-            <Button fx:id="cancelTransaction" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Continue Shopping" />
+            <Button fx:id="confirm" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Confirm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="cancelTransaction" mnemonicParsing="false" prefHeight="39.0" prefWidth="197.0" text="Continue Shopping">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
          <VBox.margin>
             <Insets />

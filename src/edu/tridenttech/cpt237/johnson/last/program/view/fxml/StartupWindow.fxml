@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="438.0" prefWidth="519.0" stylesheets="@../style/theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="602.0" prefWidth="519.0" stylesheets="@../style/theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -34,6 +34,11 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
+            <Button fx:id="showReport" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="Show Report">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             <Button fx:id="close" mnemonicParsing="false" text="Close" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="20.0" />

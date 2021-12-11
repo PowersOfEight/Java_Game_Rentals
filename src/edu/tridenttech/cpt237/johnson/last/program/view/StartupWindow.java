@@ -25,12 +25,22 @@ public class StartupWindow
 	{
 		@FXML private Button shop;
 		@FXML private Button close;
+		@FXML private Button showReport;
 		
 		@Override
 		public void initialize(URL location, ResourceBundle resources) 
 		{
 			shop.setOnAction(e -> startShopping());
 			close.setOnAction(e -> stage.close());
+			showReport.setOnAction(e -> 
+			{
+				Stage stage = new Stage();
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(getStage());
+				ReportWindow reportWindow = 
+						new ReportWindow(stage);
+				reportWindow.show(store);
+			});
 		}
 		
 	}
@@ -56,6 +66,7 @@ public class StartupWindow
 			e.printStackTrace();
 		}
 	}
+	
 	
 	private void startShopping()
 	{
