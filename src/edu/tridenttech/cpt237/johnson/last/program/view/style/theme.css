@@ -1,0 +1,55 @@
+* {
+	-fx-background-color: #313;
+	-fx-text-fill: #fbf;
+} 
+
+
+.button:hover, .list-cell:hover {
+	-fx-background-color: #646;
+	-fx-text-fill: #dad;
+}
+
+.button:pressed {
+	-fx-background-color: #424;
+	-fx-text-fill: #b8b;
+}
+
+.top-banner {
+	
+}
+
+.list-view {
+	-fx-background-color: #202;
+}
+
+/* .list-cell:even {
+	-fx-background-color: #424;
+	-fx-text-fill: #b8b;
+}
+
+.list-cell:odd {
+	-fx-background-color: #202;
+	-fx-text-fill: #a7a;
+} */
+
+.button, .list-cell:selected {
+	-fx-background-color: #535;
+	-fx-text-fill: #c9c;
+}
+
+.text-area .content {
+	-fx-text-inner-color: #313;
+	-fx-font-family: 'Consolas';
+}
+
+.text-area .scroll-pane .content {
+	-fx-background-color: #313;
+	-fx-text-fill: #fbf;
+}
+
+.text-area .scroll-pane {
+	-fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport {
+	-fx-background-color: transparent;
+}
