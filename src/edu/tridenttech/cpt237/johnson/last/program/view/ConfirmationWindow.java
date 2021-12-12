@@ -1,5 +1,7 @@
 package edu.tridenttech.cpt237.johnson.last.program.view;
-
+//AUTHOR: James Daniel Johnson
+//COURSE: CPT 237
+//ASSIGNMENT: Final Program
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,8 +19,21 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
+/**
+ * ConfirmationWindow displays information about
+ * the current transaction and allows the user
+ * to cancel or complete this transaction.
+ * @author James Daniel Johnson
+ *
+ */
 public class ConfirmationWindow 
 {
+	
+	/**
+	 * Controls all of the FXML elements
+	 * @author James Daniel Johnson
+	 *
+	 */
 	private class ConfirmationWindowController implements Initializable
 	{
 		@FXML private TextArea transaction;
@@ -42,7 +57,6 @@ public class ConfirmationWindow
 			{
 				confirmTransaction();
 			});
-			transaction.setStyle("-fx-font-family: 'Consolas';");
 		}
 
 	}
@@ -52,6 +66,10 @@ public class ConfirmationWindow
 	private int transactionId;
 	private ConfirmationWindowController controller;
 
+	/**
+	 * Sets up the document using FXMLLoader
+	 * @param stage The stage associated with this window
+	 */
 	public ConfirmationWindow(Stage stage)
 	{
 		try 
@@ -73,6 +91,9 @@ public class ConfirmationWindow
 		}
 	}
 
+	/**
+	 * Prints the transaction receipt to the text area
+	 */
 	private void printTransactionReceipt()
 	{
 		Transaction trans = 
@@ -80,6 +101,9 @@ public class ConfirmationWindow
 		controller.getTransaction().setText(trans.getReceipt());
 	}
 	
+	/**
+	 * Confirms and processes the transaction
+	 */
 	private void confirmTransaction()
 	{
 		Stage owner = (Stage) stage.getOwner();
@@ -91,6 +115,13 @@ public class ConfirmationWindow
 		owner.close();
 	}
 	
+	/**
+	 * Sets the store associated with this window,
+	 * and the transaction ID, then shows the window.
+	 * @param store The store to associate with this window
+	 * @param transactionId The id of the transaction to associate with
+	 * 	this window
+	 */
 	public void show(Store store, int transactionId)
 	{
 		this.store = store;

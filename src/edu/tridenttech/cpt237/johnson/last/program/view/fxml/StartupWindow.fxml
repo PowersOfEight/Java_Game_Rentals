@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="602.0" prefWidth="519.0" stylesheets="@../style/theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="602.0" prefWidth="751.0" stylesheets="@../style/theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -20,7 +20,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="240.0" prefWidth="668.0">
          <children>
             <ImageView fx:id="iview" fitHeight="240.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,6 +35,11 @@
                   <Font size="20.0" />
                </font></Button>
             <Button fx:id="showReport" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="Show Report">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="statisticsButton" mnemonicParsing="false" prefHeight="47.0" prefWidth="135.0" text="Statistics">
                <font>
                   <Font size="20.0" />
                </font>

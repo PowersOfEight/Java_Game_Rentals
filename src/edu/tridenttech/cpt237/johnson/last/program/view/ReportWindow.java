@@ -1,5 +1,7 @@
 package edu.tridenttech.cpt237.johnson.last.program.view;
-
+//AUTHOR: James Daniel Johnson
+//COURSE: CPT 237
+//ASSIGNMENT: Final Program
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -17,9 +19,20 @@ import javafx.stage.StageStyle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * ReportWindow displays a daily transaction
+ * report to the user.
+ * @author James Daniel Johnson
+ *
+ */
 public class ReportWindow 
 {
 	
+	/**
+	 * Manages all of the ReportWindows controls.
+	 * @author James Daniel Johnson
+	 *
+	 */
 	private class ReportWindowController implements Initializable
 	{
 		
@@ -46,6 +59,10 @@ public class ReportWindow
 	private Stage stage;
 	private ReportWindowController controller;
 	
+	/**
+	 * Loads the document through the FMXLLoader.
+	 * @param stage The stage to use for this window.
+	 */
 	public ReportWindow(Stage stage)
 	{
 		this.stage = stage;
@@ -67,6 +84,9 @@ public class ReportWindow
 		}
 	}
 	
+	/**
+	 * Writes receipts to the TextArea
+	 */
 	private void writeReceipts()
 	{
 		List<Transaction> transactions = 
@@ -88,6 +108,11 @@ public class ReportWindow
 		reportArea.setText(reportBuilder.toString());
 	}
 	
+	/**
+	 * Writes the receipts from the store,
+	 * then displays the window.
+	 * @param store The store to associate with this window.
+	 */
 	public void show(Store store)
 	{
 		this.store = store;

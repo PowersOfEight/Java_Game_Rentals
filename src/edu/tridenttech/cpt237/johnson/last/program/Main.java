@@ -7,6 +7,12 @@ import edu.tridenttech.cpt237.johnson.last.program.view.StartupWindow;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * This application allows a user to rent games from a
+ * game rental firm.
+ * @author James Daniel Johnson
+ *
+ */
 public class Main extends Application 
 {
 	@Override

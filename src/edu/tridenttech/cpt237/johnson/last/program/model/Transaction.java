@@ -1,13 +1,19 @@
 package edu.tridenttech.cpt237.johnson.last.program.model;
+//AUTHOR: James Daniel Johnson
+//COURSE: CPT 237
+//ASSIGNMENT: Final Project
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//AUTHOR: James Daniel Johnson
-//COURSE: CPT 237
-//ASSIGNMENT: Final Project
-
+/**
+ * Transaction is a uniquely identified
+ * transaction. Each transaction is processed
+ * on a <code>Cart</code>.
+ * @author James Daniel Johnson
+ *
+ */
 public class Transaction 
 {
 	
@@ -34,6 +40,11 @@ public class Transaction
 		return purchaseList.size();
 	}
 	
+	/**
+	 * Returns a String representation of the receipt
+	 * for this transaction
+	 * @return A String representation of the receipt
+	 */
 	public String getReceipt()
 	{
 		StringBuilder receipt = new StringBuilder();
@@ -56,12 +67,17 @@ public class Transaction
 		return receipt.toString();
 	}
 	
+	/**
+	 * Returns a sorted list of games
+	 * @return A sorted list of games
+	 */
 	public List<Game> getList()
 	{
 		purchaseList.sort((left, right)->
 		{
 			int primaryCheck = 
-					left.getStringFormat().compareToIgnoreCase(right.getStringFormat());
+					left.getStringFormat().
+					compareToIgnoreCase(right.getStringFormat());
 			if(primaryCheck != 0)
 			{
 				return primaryCheck;
@@ -71,13 +87,34 @@ public class Transaction
 		return Collections.unmodifiableList(purchaseList);
 	}
 	
+	
 	public double costPerItem()
 	{
 		return COST_PER_GAME;
 	}
 	
+	/**
+	 * Calculates the total cost of this transaction
+	 * @return The total cost
+	 */
 	public double calculateCost()
 	{
 		return purchaseList.size() * COST_PER_GAME;
+	}
+
+	/**
+	 * Returns the cost attributed to the format value
+	 * @param format The format to associate with this cost
+	 * @return The total sales for this transaction of this format
+	 */
+	public double getCostPerFormat(GameFormat format) 
+	{
+		ArrayList<Game> games = new ArrayList<Game>(purchaseList);
+		games.removeIf(game -> 
+		{
+			return !game.getFormat().equals(format);
+		}); 
+		
+		return games.size() * COST_PER_GAME;
 	}
 }

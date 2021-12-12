@@ -1,4 +1,7 @@
 package edu.tridenttech.cpt237.johnson.last.program.view;
+//AUTHOR: James Daniel Johnson
+//COURSE: CPT 237
+//ASSIGNMENT: Final Program
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,17 +18,27 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * This is the window that appears at startup.
+ * @author James Daniel Johnson
+ */
 public class StartupWindow 
 {
 
 	private Stage stage;
 	private Store store;
 	
+	/**
+	 * Controller for the StartupWindow
+	 * @author James Daniel Johnson
+	 *
+	 */
 	private class StartupWindowController implements Initializable
 	{
 		@FXML private Button shop;
-		@FXML private Button close;
 		@FXML private Button showReport;
+		@FXML private Button statisticsButton;
+		@FXML private Button close;
 		
 		@Override
 		public void initialize(URL location, ResourceBundle resources) 
@@ -40,6 +53,11 @@ public class StartupWindow
 				ReportWindow reportWindow = 
 						new ReportWindow(stage);
 				reportWindow.show(store);
+			});
+			statisticsButton.setOnAction(e -> 
+			{
+				new StatisticsWindow(
+						new Stage()).show(store);
 			});
 		}
 		
@@ -62,7 +80,6 @@ public class StartupWindow
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

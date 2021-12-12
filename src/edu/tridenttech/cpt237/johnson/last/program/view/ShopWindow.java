@@ -1,5 +1,7 @@
 package edu.tridenttech.cpt237.johnson.last.program.view;
-
+//AUTHOR: James Daniel Johnson
+//COURSE: CPT 237
+//ASSIGNMENT: Final Program
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,15 +18,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The shop window allows the user to shop,
+ * add and remove items from their cart,
+ * as well as proceeding to checkout
+ * @author James Daniel Johnson
+ *
+ */
 public class ShopWindow 
 {
 
+	/**
+	 * Controls all of the controls in this window
+	 * @author James Daniel Johnson
+	 *
+	 */
 	private class ShopWindowController implements Initializable
 	{
 		@FXML private ListView<String> consoleChooser;
@@ -73,6 +89,7 @@ public class ShopWindow
 			addListener(e -> 
 			{
 				populateGames(consoleChooser, gameChooser);
+	
 			});
 		}
 
@@ -108,6 +125,10 @@ public class ShopWindow
 	private ShopWindowController controller;
 
 
+	/**
+	 * Loads the window from FXML
+	 * @param stage The stage for this window
+	 */
 	public ShopWindow(Stage stage)
 	{
 		this.stage = stage;
@@ -134,6 +155,10 @@ public class ShopWindow
 		}
 	}
 	
+	/**
+	 * Cleans up in the case of a canceled
+	 * order or closed window.
+	 */
 	private void onCancelOrder()
 	{
 		this.shoppingCart.emptyCart(store);
@@ -141,6 +166,14 @@ public class ShopWindow
 	}
 	
 
+	/**
+	 * Removes the items from this cart and displays them
+	 * in the gameChooser list.
+	 * Will not add games that do not match the current
+	 * <code>GameFormat</code> of the gameChooser.
+	 * @param cart The cart to remove the items from
+	 * @param gameChooser The list to return the items to
+	 */
 	private void removeItemsFromCart(ListView<String> cart,
 			ListView<String> gameChooser)
 	{
@@ -173,12 +206,10 @@ public class ShopWindow
 			return left.compareToIgnoreCase(right);
 		});
 	}
-	
-	public void populateListViews()
-	{
-		populateConsoleChooser();
-	}
 
+	/**
+	 * Populates the values in the consoleChooser list
+	 */
 	public void populateConsoleChooser()
 	{
 		ListView<String> consoleChooser = 
@@ -192,6 +223,12 @@ public class ShopWindow
 
 	}
 
+	/**
+	 * Moves the items from the gameChooser list to
+	 * the cart list.
+	 * @param gameChooser The list of games to choose from
+	 * @param cart The list of games in the cart
+	 */
 	private void addItemsToCart(ListView<String> gameChooser,
 			ListView<String> cart)
 	{
@@ -210,15 +247,40 @@ public class ShopWindow
 		gameChooser.getItems().removeAll(chosenGames);
 	}
 
+	/**
+	 * Processes the checkout process and
+	 * opens a new <code>ConfirmationWindow</code>.
+	 * Handles an empty cart by showing an alert
+	 * window to the user.
+	 */
 	private void proceedToCheckout()
 	{
 		Stage checkoutStage = new Stage();
 		checkoutStage.initOwner(this.stage);
 		checkoutStage.initModality(Modality.WINDOW_MODAL);
-		new ConfirmationWindow(checkoutStage).show(store, 
-				store.initiateTransaction(shoppingCart));
+		try
+		{
+			new ConfirmationWindow(checkoutStage).show(store, 
+					store.initiateTransaction(shoppingCart));			
+		}
+		catch(Exception ex)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText(ex.getMessage());
+			alert.getDialogPane().getStylesheets().add(
+					getClass().
+					getResource("style/theme.css").
+					toExternalForm());
+			alert.show();
+		}
 	}
 	
+	/**
+	 * Populates the games that can be selected in the
+	 * gameChooser <code>ListView</code>.
+	 * @param consoleChooser The consoleChooser list view
+	 * @param gameChooser The gameChooser list view
+	 */
 	private void populateGames(ListView<String> consoleChooser,
 			ListView<String> gameChooser)
 	{
@@ -226,9 +288,23 @@ public class ShopWindow
 				consoleChooser.
 				getSelectionModel().
 				getSelectedItem().split(" : ");
-		currentFormat = GameFormat.select(
-				formatStrings[0], 
-				formatStrings[1]);
+		
+		try
+		{
+			currentFormat = GameFormat.select(
+					formatStrings[0], 
+					formatStrings[1]);
+		} 
+		catch (Exception e) 
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error: Format Error");
+			alert.getDialogPane().getStylesheets().
+				add(getClass().
+					getResource("style/theme.css").toExternalForm());
+			alert.setHeaderText("Invalid Format");
+			alert.setContentText("Invalid Format detected");
+		}
 		gameChooser.getItems().clear();
 		ArrayList<Game> gameList = new ArrayList<Game>
 		(new HashSet<Game>(
@@ -246,11 +322,17 @@ public class ShopWindow
 		});
 	}
 
+	/**
+	 * Sets the store to store, creates
+	 * the cart, and shows this window.
+	 * @param store The store instance to associate this
+	 * 	window with.
+	 */
 	public void show(Store store)
 	{
 		this.store = store;
 		this.shoppingCart = new Cart();
-		populateListViews();
+		populateConsoleChooser();
 		this.stage.show();
 	}
 }

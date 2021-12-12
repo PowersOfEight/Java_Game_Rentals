@@ -20,14 +20,20 @@ public class Game
 	 * @param title The title of the game
 	 * @throws Exception 
 	 */
-	public Game(int format, 
+	public Game(int format,
+			int line,
 			String title) throws IllegalArgumentException
 	{
-		this.gameFormat = GameFormat.findFormatByIndex(format);
-//		this.format = FORMAT_VALUES[format - FORMAT_INDEX_OFFSET];
+		this.gameFormat = GameFormat.findFormatByIndex(format, line);
 		this.title = title;
 	}
 	
+	/**
+	 * Alternate instance creator to create
+	 * dummy comparison objects.
+	 * @param format The format of the game
+	 * @param title The title of the game
+	 */
 	public Game(GameFormat format,
 			String title)
 	{
@@ -35,7 +41,9 @@ public class Game
 		this.title = title;
 	}
 	
-
+	/**
+	 * Needed for <code>HashSet</code>
+	 */
 	@Override
 	public boolean equals(Object other)
 	{
@@ -49,6 +57,12 @@ public class Game
 				this.title.equals(game.getTitle());
 	}
 	
+	/**
+	 * Needed for <code>HashSet</code>.
+	 * Provides an equivalent hash for 
+	 * objects with the same <code>GameFormat</code>
+	 * value and title.
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -61,11 +75,21 @@ public class Game
 		return this.title;
 	}
 	
+	/**
+	 * Returns the format of this game.
+	 * @return The format of this game.
+	 */
 	public GameFormat getFormat()
 	{
 		return this.gameFormat;
 	}
 	
+	/**
+	 * Returns the format of this game in
+	 * a <code>String</code>
+	 * @return The format of this game in
+	 * 	<code>String</code> form.
+	 */
 	public String getStringFormat()
 	{
 		return this.gameFormat.getGameConsole();

@@ -47,17 +47,33 @@ public class Cart
 		return cart.contains(game);
 	}
 	
+	/**
+	 * Returns true if the cart is empty
+	 * @return True if the cart is empty
+	 */
 	public boolean isEmpty()
 	{
 		return cart.isEmpty();
 	}
 	
+	/**
+	 * Removes an instance of a game that 
+	 * matches this format and title, and returns it
+	 * @param format The format of the game
+	 * @param title The title of the game
+	 * @return The game removed from the list
+	 */
 	public Game remove(GameFormat format, String title)
 	{
 		int index = cart.indexOf(new Game(format, title));
 		return cart.remove(index);
 	}
 	
+	/**
+	 * Completely empties the cart and returns
+	 * all games to the store inventory.
+	 * @param store The store to return the games to.
+	 */
 	public void emptyCart(Store store)
 	{
 		cart.forEach( game ->
